@@ -1,0 +1,34 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-900">
+    <div class="w-1/2 h-1/2 bg-gray-800 text-white rounded-lg shadow-lg p-4">
+    <h1 class="text-3xl font-bold mb-4">Create Your Personalized AI</h1>
+    <p class="mb-3">Fill out the form below to create a new assistant.</p>
+  
+    <form [formGroup]="assistantForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      <div class="form-group">
+        <label for="instruction" class="block text-lg font-medium">Instruction:</label>
+        <input id="instruction" formControlName="instruction" class="w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white" />
+        <div *ngIf="assistantForm.get('instruction')?.invalid && assistantForm.get('instruction')?.touched">
+          <small class="text-red-400">Instruction is required.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description" class="block text-lg font-medium">Description:</label>
+        <input id="description" formControlName="description" class="w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white" />
+        <div *ngIf="assistantForm.get('description')?.invalid && assistantForm.get('description')?.touched">
+          <small class="text-red-400">Description is required.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="function" class="block text-lg font-medium">Function:</label>
+        <input id="function" formControlName="function" class="w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white" />
+        <div *ngIf="assistantForm.get('function')?.invalid && assistantForm.get('function')?.touched">
+          <small class="text-red-400">Function is required.</small>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="assistantForm.invalid" class="btn-primary">Create Assistant</button>
+    </form>
+    </div>
+</div>
